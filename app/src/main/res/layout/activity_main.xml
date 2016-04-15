@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+    <app.test.com.testdome.view.UIListItemViewGroup
+        android:id="@+id/id_uilistItem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+    </app.test.com.testdome.view.UIListItemViewGroup>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="8dip"
+        android:background="#FFE6E4E4"/>
+    <app.test.com.testdome.view.UIListItemViewGroup
+        android:id="@+id/id_uilistItem_2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+    </app.test.com.testdome.view.UIListItemViewGroup>
+
+
+</LinearLayout>
