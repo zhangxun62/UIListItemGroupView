@@ -70,6 +70,8 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
         holder.setText(R.id.id_tv_title, item.getTitle());
         if (!item.isArrow()) {
             holder.findId(R.id.id_iv_right_image).setVisibility(View.INVISIBLE);
+        } else {
+            holder.setImage(R.id.id_iv_right_image, item.getRightDrawableId());
         }
         switch (item.getType()) {
             case ListItemModel.DEFAULT:
