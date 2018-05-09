@@ -12,7 +12,7 @@
         android:id="@+id/id_iv_left_image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@leftDrawableId/ic_clear_data"
+        app:srcCompat="@drawable/ic_clear_data"
         />
 
     <android.support.v7.widget.AppCompatTextView
@@ -35,6 +35,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
-        app:srcCompat="@leftDrawableId/arrow_left"
+        app:srcCompat="@drawable/arrow_left"
         />
 </android.support.v7.widget.LinearLayoutCompat>

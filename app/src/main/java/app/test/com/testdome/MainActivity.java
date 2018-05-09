@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
         ListItemModel clear = new ListItemModel(R.drawable.ic_clear_data, "清理数据");
         mUIListItemViewGroup.addItem(clear);
         mUIListItemViewGroup.addItem(new ListItemModel(R.drawable.ic_clear_data, "个人中心"));
+        mUIListItemViewGroup.addItem(new ListItemModel(R.drawable.ic_clear_data, "个人中心", "1213"));
 
         initEvents();
 

@@ -5,10 +5,14 @@ import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.AppCompatImageView;
 import android.support.v7.widget.AppCompatTextView;
+import android.support.v7.widget.LinearLayoutCompat;
 import android.support.v7.widget.RecyclerView;
+import android.util.TypedValue;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import java.util.List;
 
@@ -43,7 +47,21 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
     @NonNull
     @Override
     public ItemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_ui_list_item, parent, false);
+        LinearLayoutCompat view = (LinearLayoutCompat) LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_ui_list_item, parent, false);
+        if (viewType == ListItemModel.RIGHT_TEXT) {
+            AppCompatTextView textView = view.findViewWithTag("rightText");
+            if (textView == null) {
+                textView = new AppCompatTextView(parent.getContext());
+                LinearLayoutCompat.LayoutParams params = new LinearLayoutCompat.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                params.gravity = Gravity.CENTER_VERTICAL;
+                params.rightMargin = 16;
+                textView.setTag("rightText");
+                textView.setLayoutParams(params);
+                view.addView(textView, view.getChildCount() - 1);
+            }
+
+
+        }
         return new ItemViewHolder(view);
     }
 
@@ -56,6 +74,9 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
                 holder.setImage(R.id.id_iv_left_image, item.getLeftDrawableId());
                 break;
             case ListItemModel.RED_DOT:
+                break;
+            case ListItemModel.RIGHT_TEXT:
+                holder.setText("rightText", item.getRightText());
                 break;
             default:
                 holder.setImage(R.id.id_iv_left_image, item.getLeftDrawableId());
@@ -88,8 +109,17 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
             return this.itemView.findViewById(id);
         }
 
+        public <T extends View> T findId(Object tag) {
+            return this.itemView.findViewWithTag(tag);
+        }
+
         public ItemViewHolder setText(int id, CharSequence text) {
             ((AppCompatTextView) findId(id)).setText(text);
+            return this;
+        }
+
+        public ItemViewHolder setText(Object tag, CharSequence text) {
+            ((AppCompatTextView) findId(tag)).setText(text);
             return this;
         }
 
