@@ -55,7 +55,7 @@ public class ListItemViewGroup extends RecyclerView {
     public void addItem(ListItemModel item) {
         mList.add(item);
         if (null != mAdapter) {
-            mAdapter.notifyDataSetChanged();
+            mAdapter.notifyItemChanged(mList.size() - 1);
         }
 
     }

@@ -16,11 +16,17 @@ public class ListItemModel {
     private String mTitle;
     private String mRightText;
     private int mType = DEFAULT;
+    private int mRightDrawableId;
+    /**
+     * 是否 最显示右边箭头 默认显示
+     */
+    private boolean isArrow = true;
 
     public ListItemModel(int leftDrawableId, String title) {
         mLeftDrawableId = leftDrawableId;
         mTitle = title;
     }
+
 
     public ListItemModel(int leftDrawableId, String title, String rightText) {
         mLeftDrawableId = leftDrawableId;
@@ -59,5 +65,22 @@ public class ListItemModel {
 
     public void setTitle(String title) {
         mTitle = title;
+    }
+
+
+    public int getRightDrawableId() {
+        return mRightDrawableId;
+    }
+
+    public void setRightDrawableId(int rightDrawableId) {
+        mRightDrawableId = rightDrawableId;
+    }
+
+    public boolean isArrow() {
+        return isArrow;
+    }
+
+    public void setArrow(boolean arrow) {
+        isArrow = arrow;
     }
 }

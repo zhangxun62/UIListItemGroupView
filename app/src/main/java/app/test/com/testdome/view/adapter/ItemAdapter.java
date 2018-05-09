@@ -7,12 +7,10 @@ import android.support.v7.widget.AppCompatImageView;
 import android.support.v7.widget.AppCompatTextView;
 import android.support.v7.widget.LinearLayoutCompat;
 import android.support.v7.widget.RecyclerView;
-import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import java.util.List;
 
@@ -57,6 +55,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
                 params.rightMargin = 16;
                 textView.setTag("rightText");
                 textView.setLayoutParams(params);
+                // 将控件添加到最右边的
                 view.addView(textView, view.getChildCount() - 1);
             }
 
@@ -69,6 +68,9 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
     public void onBindViewHolder(@NonNull ItemViewHolder holder, final int position) {
         ListItemModel item = mList.get(position);
         holder.setText(R.id.id_tv_title, item.getTitle());
+        if (!item.isArrow()) {
+            holder.findId(R.id.id_iv_right_image).setVisibility(View.INVISIBLE);
+        }
         switch (item.getType()) {
             case ListItemModel.DEFAULT:
                 holder.setImage(R.id.id_iv_left_image, item.getLeftDrawableId());
